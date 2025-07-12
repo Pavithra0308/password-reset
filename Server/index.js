@@ -56,18 +56,14 @@ transporter.verify((err) => {
 
 app.get("/server", (req, res) => {
   res.send(`
-    <html>
-      <head><title>Server Status</title></head>
-      <body style="font-family:sans-serif; text-align:center; padding:2rem;">
-        <h1>🎉 Password Reset API</h1>
-        <h2>Server is up and running!</h2>
-        <p>This backend is connected to your Netlify frontend at:</p>
-        <a href="${process.env.CLIENT_URL}" target="_blank">${process.env.CLIENT_URL}</a>
-      </body>
-    </html>
-  `);
+      <html>
+        <body>
+          <h1>🎉 Password Reset API</h1>
+         
+        </body>
+      </html>
+    `);
 });
-
 
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
