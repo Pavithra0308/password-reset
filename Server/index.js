@@ -45,7 +45,7 @@ transporter.verify((err) => {
   else console.log("Email transporter is ready");
 });
 
-app.get("/server", (req, res) => {
+app.get("/", (req, res) => {
   res.send(`
     <html>
       <head>
