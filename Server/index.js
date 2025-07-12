@@ -1,4 +1,5 @@
 require("dotenv").config();
+console.log("CLIENT_URL from .env:", process.env.CLIENT_URL);
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
