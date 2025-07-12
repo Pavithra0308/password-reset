@@ -21,14 +21,6 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self';"
-  );
-  next();
-});
-
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
@@ -49,8 +41,7 @@ app.get("/server", (req, res) => {
   res.send(`
       <html>
         <body>
-          <h1>🎉 Password Reset API</h1>
-         
+          <h1>Password Reset API</h1>
         </body>
       </html>
     `);
