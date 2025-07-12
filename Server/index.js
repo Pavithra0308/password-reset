@@ -20,6 +20,14 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self';"
+  );
+  next();
+});
+
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -39,12 +47,17 @@ transporter.verify((err) => {
 
 app.get("/server", (req, res) => {
   res.send(`
-      <html>
-        <body>
-          <h1>Password Reset API</h1>
-        </body>
-      </html>
-    `);
+    <html>
+      <head>
+        <title>Server Status</title>
+        <link rel="icon" href="data:,">
+      </head>
+      <body style="font-family: sans-serif; text-align: center; padding-top: 2rem;">
+        <h1>🎉 Server is Running</h1>
+        <p>Connected to Frontend 👉 <a href="${process.env.CLIENT_URL}" target="_blank">${process.env.CLIENT_URL}</a></p>
+      </body>
+    </html>
+  `);
 });
 
 app.post("/register", async (req, res) => {
