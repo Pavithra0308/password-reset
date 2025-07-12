@@ -167,6 +167,6 @@ app.post("/reset-password/:token", async (req, res) => {
     res.status(500).json({ message: "Failed to reset password" });
   }
 });
-
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
